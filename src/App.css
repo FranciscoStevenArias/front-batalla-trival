@@ -1,0 +1,873 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Estilos para el componente MatrixRain */
+.matrix-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Estilos para el contenido principal */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.description {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+/* Estilos para los botones */
+.button-container {
+  display: flex;
+  flex-direction: row; /* Los botones se colocan en fila en pantallas grandes */
+  justify-content: center; /* Centra los botones horizontalmente */
+  gap: 1.5rem;
+  margin-top: 2rem; /* Espacio adicional entre la descripción y los botones */
+}
+
+.join-btn {
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  outline: none;
+  border: none;
+  background-color: #48bb78;
+  color: white;
+  cursor: pointer;
+}
+
+.join-btn:hover {
+  background-color: #38a169;
+  transform: scale(1.05); /* Efecto hover para agrandar un poco el botón */
+}
+
+.join-btn:active {
+  transform: scale(0.98); /* Efecto cuando se presiona el botón */
+}
+
+.join-btn:focus {
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+/* Media Queries para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+
+  .description {
+    font-size: 1.2rem;
+  }
+
+  .button-container {
+    flex-direction: column; /* Los botones se apilan en pantallas pequeñas */
+    gap: 1rem;
+  }
+
+  .join-btn {
+    width: 100%;
+  }
+}
+.ui.container.join-room-container {
+  
+  max-width: 600px !important;
+  margin: 2rem auto !important;
+  background-color: rgba(73, 72, 72, 0.9);
+  border-radius: 16px;
+  padding: 9rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.join-room-title {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.join-room-error {
+  background-color: #fed7d7;
+  border: 1px solid #feb2b2;
+  color: #c53030;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.join-room-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.join-room-input {
+  
+  margin-bottom: 2rem; /* Aumentado para dar más espacio a los inputs más grandes */
+}
+
+.join-room-input label {
+  font-size: 2rem;
+  margin-bottom: 0.75rem; /* Aumentado para equilibrar con los inputs más grandes */
+  display: block;
+  color:white;
+}
+
+.join-room-input input {
+  padding: 1.25rem; /* Aumentado para hacer los inputs más altos */
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1.3rem; /* Aumentado para texto más grande en los inputs */
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.join-room-input input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.join-room-submit {
+  background-color: #214fe4;
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.join-room-submit:hover {
+  background-color: #283f8a;
+}
+
+.join-room-back {
+  display: block;
+  background: #ecd610;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  transition: color 0.2s;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.join-room-back:hover {
+  color: #2d3748;
+}
+
+@media (max-width: 480px) {
+  .ui.container.join-room-container {
+    padding: 2rem;
+  }
+
+  .join-room-title {
+    font-size: 2rem;
+    color: #e2e8f0;
+  }
+
+  .join-room-input input {
+    padding: 1rem; /* Ligeramente reducido para pantallas pequeñas */
+    font-size: 1.2rem; /* Ligeramente reducido para pantallas pequeñas */
+  }
+}
+.join-room-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-right {
+  margin-left: 8px;
+}
+
+.join-room-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-left {
+  margin-right: 8px;
+}
+.join-room-logo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.join-room-logo img {
+  max-width: 100%;
+  height: auto;
+  max-height: 100px; /* Ajusta esto según el tamaño que desees */
+}
+
+@media (max-width: 480px) {
+  .join-room-logo img {
+    max-height: 80px; /* Tamaño más pequeño para móviles */
+  }
+}
+/* Estilo para el contenedor del input */
+.ui.form .field.join-room-input {
+  margin-bottom: 1.5rem;
+}
+
+/* Estilo para las etiquetas */
+.ui.form .field.join-room-input > label {
+  color: #f9fbff; /* Color del texto de la etiqueta */
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Estilo para los inputs */
+.ui.form .field.join-room-input input {
+  background-color: #dfe6eb; /* Color de fondo del input */
+  border: 2px solid #d2d6db; /* Color del borde */
+  color: #400ccf; /* Color del texto */
+  padding: 1.25rem;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+
+/* Estilo para el placeholder */
+.ui.form .field.join-room-input input::placeholder {
+  color: #5996d3; /* Color del texto del placeholder */
+}
+
+/* Estilo para el hover */
+.ui.form .field.join-room-input input:hover {
+  border-color: #eceef0;
+}
+
+/* Estilo para el focus */
+.ui.form .field.join-room-input input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  background-color: #fff; /* Cambiar el fondo al enfocar */
+  color: #214fe4;
+}
+
+/* Estilo para input de solo lectura */
+.ui.form .field.join-room-input input[readonly] {
+  background-color: #e2e6eb; /* Fondo más oscuro para inputs de solo lectura */
+  color: #214fe4; /* Color de texto más claro para inputs de solo lectura */
+}
+
+/************************************ Codigo CSS del chat ********************************* */
+/************************************ Codigo CSS del chat ********************************* */
+.chat-lobby {
+  min-height: 100vh;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: #efeff1;
+}
+
+.chat-layout {
+  height: calc(100vh - 2rem);
+}
+
+.chat-main {
+  height: 100%;
+}
+
+.chat-container {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 600px; /* Altura fija para escritorio */
+  max-height: calc(100vh - 2rem); /* Asegura que no exceda la altura de la ventana */
+}
+
+.chat-header {
+  background-color: #18181b;
+  color: #efeff1;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px; /* Altura fija para el encabezado */
+  flex-shrink: 0; /* Evita que el encabezado se encoja */
+}
+
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto; /* Solo esta sección tendrá scroll */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  max-width: 80%;
+  word-wrap: break-word;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.message-self {
+  align-self: flex-end;
+  background-color: rgba(0, 255, 157, 0.2);
+  color: #efeff1;
+}
+
+.message-other {
+  align-self: flex-start;
+  background-color: rgba(255, 0, 160, 0.2);
+  color: #efeff1;
+}
+
+.chat-input {
+  padding: 1rem;
+  background-color: #18181b;
+  height: 60px; /* Altura fija para el área de input */
+  flex-shrink: 0; /* Evita que el área de input se encoja */
+}
+
+.chat-input input {
+  background-color: #3a3a3d !important;
+  border: none !important;
+  color: #efeff1 !important;
+  border-radius: 5px !important;
+}
+
+.chat-input button {
+  background-color: #9147ff !important;
+  color: #efeff1 !important;
+}
+
+.players-sidebar {
+  background-color: #18181b;
+  overflow: hidden;
+  height: 600px; /* Altura fija para coincidir con el chat */
+  max-height: calc(100vh - 2rem);
+}
+
+.players-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.players-header {
+  background-color: #1f1f23;
+  color: #efeff1;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 50px; /* Altura fija para coincidir con el encabezado del chat */
+}
+
+.players-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.player-item {
+  padding: 0.5rem;
+  border-bottom: 1px solid #3a3a3d;
+  color: #efeff1;
+}
+
+.action-button {
+  width: 100%;
+  margin-top: 0.5rem !important;
+  border-radius: 5px !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  padding: 0.5rem !important;
+}
+
+.start-game-button {
+  background-color: #9147ff !important;
+  color: #efeff1 !important;
+}
+
+.leave-room-button {
+  background-color: #eb0400 !important;
+  color: #efeff1 !important;
+}
+
+.warning-message {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: #60d6c2;
+  border-radius: 5px;
+  color: #0e0e10;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .chat-lobby {
+    padding: 0;
+  }
+
+  .chat-layout {
+    height: 100vh;
+  }
+
+  .chat-main {
+    height: 70vh;
+  }
+
+  .chat-container {
+    height: 100%; /* Ocupa todo el alto disponible en móvil */
+    border-radius: 0;
+  }
+
+  .players-sidebar {
+    height: 30vh;
+  }
+}
+.creador-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.white-icon {
+  filter: brightness(0) invert(1);
+}
+
+
+/* **********************ESTILOS DE Juego************************* */
+/**************************Diseño Preguntas**********************************/
+.quiz-lobby {
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  color: #efeff1;
+}
+
+.quiz-layout {
+  height: calc(100vh - 4rem);
+}
+
+.quiz-main {
+  height: 100%;
+}
+
+.quiz-container {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  max-height: calc(100vh - 4rem);
+}
+
+.quiz-header {
+  background-color: #18181b;
+  color: #efeff1;
+  padding: 1.5rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  flex-shrink: 0;
+}
+
+.quiz-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.quiz-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.timer {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.category-level {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.question {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.question-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  object-fit: contain;
+  max-height: 200px;
+}
+
+.options-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.option {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #3a3a3d;
+  border: none;
+  border-radius: 8px;
+  color: #efeff1;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.option:hover:not(:disabled) {
+  background-color: #4a4a4d;
+  transform: translateY(-2px);
+}
+
+.option.selected {
+  background-color: #9147ff;
+}
+
+.option:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.players-sidebar {
+  background-color: #18181b;
+  overflow: hidden;
+  height: 800px;
+  max-height: calc(100vh - 4rem);
+  border-radius: 15px;
+}
+
+.players-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.players-header {
+  background-color: #1f1f23;
+  color: #efeff1;
+  padding: 1rem 1.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.players-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.player-item {
+  padding: 0.8rem;
+  border-bottom: 1px solid #3a3a3d;
+  color: #efeff1;
+  font-size: 1.1rem;
+}
+
+.creador-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.white-icon {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 768px) {
+  .quiz-lobby {
+    padding: 0;
+  }
+
+  .quiz-layout {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quiz-main {
+    height: 70vh;
+    order: 1;
+  }
+
+  .quiz-container {
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .players-sidebar {
+    height: 30vh;
+    order: 2;
+    border-radius: 0;
+  }
+
+  .quiz-content {
+    padding: 1rem;
+  }
+
+  .quiz-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .timer {
+    font-size: 1.2rem;
+  }
+
+  .category-level {
+    font-size: 1rem;
+  }
+
+  .question-text {
+    font-size: 1.2rem;
+  }
+
+  .option {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .players-header {
+    font-size: 1rem;
+  }
+
+  .player-item {
+    font-size: 0.9rem;
+  }
+}
+/**************************FINAL QUIZ************************************/
+/* QuizResultsHeader.css */
+.white-text {
+  color: white;
+}
+.quiz-div {
+  color: white;
+}
+
+.quiz-div button {
+  color: initial; /* This resets the button text color to its default */
+}
+
+.scores-container p {
+  color: white;
+}
+.quiz-div {
+  background-color: #18181b;
+  color: #efeff1;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-div h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #9147ff;
+}
+
+.quiz-div p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.join-btn {
+  background-color: #9147ff;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0.5rem;
+}
+
+.join-btn:hover {
+  background-color: #7d2ae8;
+}
+
+.scores-container {
+  margin-top: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.scores-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #efeff1;
+}
+
+.scores-container p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+.ui container quiz-div {
+  color: rgb(247, 247, 247);
+}
+
+/* Confetti Animation */
+@keyframes confetti-fall {
+  0% { transform: translateY(-100%) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f0f0f0;
+  top: -10px;
+  animation: confetti-fall 5s linear infinite;
+  color: white;
+}
+
+.confetti:nth-child(2n) {
+  width: 7px;
+  height: 7px;
+  background-color: #ff69b4;
+  animation-duration: 4s;
+  color: white;
+}
+
+.confetti:nth-child(3n) {
+  width: 12px;
+  height: 12px;
+  background-color: #9147ff;
+  animation-duration: 6s;
+}
+
+.confetti:nth-child(4n) {
+  width: 8px;
+  height: 8px;
+  background-color: #00ff00;
+  animation-duration: 5s;
+}
+
+@media (max-width: 768px) {
+  .quiz-div {
+    padding: 1.5rem;
+  }
+
+  .quiz-div h1 {
+    font-size: 2rem;
+  }
+
+  .quiz-div p, .scores-container p {
+    font-size: 1rem;
+  }
+
+  .join-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .scores-container h2 {
+    font-size: 1.5rem;
+  }
+}
+/**************************Mensaje Importante************************************/
+.mensaje-importante {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 1000;
+  animation: fadeInOut 5s ease-in-out;
+}
+
+.mensaje-importante.creadorSalio {
+  background-color: #f44336;
+  color: white;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  10%, 90% { opacity: 1; }
+}
